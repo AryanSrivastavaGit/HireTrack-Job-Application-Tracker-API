@@ -1,15 +1,13 @@
 package com.aryan.hireTrack.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,14 +16,21 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class User {
     @Id
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String firstName;
+    private String middleName;
     private String lastName;
-    private long phoneNumber;
+    private String phoneNumber;
     private String email;
     private LocalDate dob;
-    @OneToOne(cascade = CascadeType.ALL)
-    private Address userAddress;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    private UserAddress userAddress;
+
     private String username;
     private String password;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<HireTrack> hireTrackList;
 }
