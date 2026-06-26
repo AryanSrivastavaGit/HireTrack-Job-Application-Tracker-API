@@ -1,5 +1,6 @@
 package com.aryan.hireTrack.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,10 +16,11 @@ public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String question;
-    private String answer;
+    private String title;
+    private String content;
 
     @ManyToOne
     @JoinColumn(name = "hire_track_id")
+    @JsonIgnoreProperties("notes")
     private HireTrack hireTrack;
 }

@@ -1,5 +1,6 @@
 package com.aryan.hireTrack.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,6 +16,7 @@ public class RoundDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String round;
     private String description;
 
@@ -23,5 +25,6 @@ public class RoundDetail {
 
     @ManyToOne
     @JoinColumn(name = "hire_track_id")
+    @JsonIgnoreProperties("roundDetails")
     private HireTrack hireTrack;
 }
