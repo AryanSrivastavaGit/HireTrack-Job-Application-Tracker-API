@@ -1,5 +1,6 @@
 package com.aryan.hireTrack.service;
 
+import com.aryan.hireTrack.entity.HireTrack;
 import com.aryan.hireTrack.entity.User;
 import com.aryan.hireTrack.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

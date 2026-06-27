@@ -52,7 +52,7 @@ public class User {
     private String username;
 
     @Column(nullable = false)
-    @JsonIgnore
+//    @JsonIgnore
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
