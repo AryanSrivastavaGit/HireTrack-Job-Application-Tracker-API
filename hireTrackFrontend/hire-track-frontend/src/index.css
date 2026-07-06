@@ -1,12 +1,17 @@
-*, *::before, *::after {
-    box-sizing: border-box; /* Width/height include padding and border */
-    margin: 0;              /* Remove default browser margins */
-    padding: 0;             /* Remove default browser padding */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    /* Width/height include padding and border */
+    margin: 0;
+    /* Remove default browser margins */
+    padding: 0;
+    /* Remove default browser padding */
 }
 
 
 /* Start Page */
-.startPageNav{
+.startPageNav {
     width: 100vw;
     height: 10vh;
     padding: 0 15px 0 15px;
@@ -17,14 +22,14 @@
     color: aliceblue;
 }
 
-.startPageLogo{
+.startPageLogo {
     padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.startPageNavButton{
+.startPageNavButton {
     padding: 0 10px 0 10px;
     display: flex;
     gap: 20px;
@@ -32,7 +37,7 @@
     align-items: center;
 }
 
-.welcomeMsg{
+.welcomeMsg {
     width: 100vw;
     height: 30vh;
     border: 2px solid red;
@@ -44,7 +49,7 @@
     gap: 5px;
 }
 
-.tutorialArea{
+.tutorialArea {
     width: 100vw;
     height: 50vh;
     border: 2px solid yellow;
@@ -52,21 +57,208 @@
     display: flex;
 }
 
-.tutorialAreaVideo{
+.tutorialAreaVideo {
     width: 50%;
     height: 100%;
     border: 2px solid green;
 }
 
-.tutorialAreaMsg{
+.tutorialAreaMsg {
     width: 50%;
     height: 100%;
     border: 2px solid blue;
 }
 
-.StartPageAbout{
+.StartPageAbout {
     width: 100vw;
     height: 20vh;
     border: 2px solid brown;
     background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
+
+footer {
+    width: 100vw;
+    height: 10vh;
+    border: 2px solid brown;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: space-between;
+}
+
+.leftSideFooter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    margin-left: 30px;
+}
+
+.rightSideFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+    gap: 10px;
+}
+
+
+/* SignupPage */
+
+
+.signupPage {
+    width: 100vw;
+    height: 100vh;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signupPageDiv {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 40px;
+    width: 380px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    text-align: center;
+}
+
+.signupPageDiv h1 {
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.signupPageDiv p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.signupPageDiv form div {
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.signupPageDiv label {
+    display: block;
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.signupPageDiv input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 8px 0;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.signupPageDiv input:focus {
+    border-bottom: 1px solid #333;
+}
+
+.signupPageDiv button {
+    width: 100%;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.signupPageDiv button:hover {
+    background-color: red;
+}
+
+
+/* LoginPage */
+
+.loginPage {
+    width: 100vw;
+    height: 100vh;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginPagediv {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 40px;
+    width: 380px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    text-align: center;
+}
+
+.loginPagediv h1 {
+    font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.loginPagediv p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.loginPagediv form div {
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.loginPagediv label {
+    display: block;
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.loginPagediv input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 8px 0;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.loginPagediv input:focus {
+    border-bottom: 1px solid #333;
+}
+
+.loginPagediv button {
+    width: 100%;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.loginPagediv button:hover {
+    background-color: red;
+}
+
+
