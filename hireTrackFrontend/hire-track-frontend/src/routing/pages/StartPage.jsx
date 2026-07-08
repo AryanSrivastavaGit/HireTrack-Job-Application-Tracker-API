@@ -1,6 +1,18 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const StartPage = () => {
+
+    const navigate = useNavigate();
+
+    let handleLogin = () => {
+        navigate('/login')
+    }
+
+    let handleSignup = () => {
+        navigate('/signup')
+    }
+
     return (
         <div>
             <nav>
@@ -9,8 +21,8 @@ const StartPage = () => {
                         <div>Hire Track</div>
                     </div>
                     <div className='startPageNavButton'>
-                        <div>Login</div>
-                        <div>Signup</div>
+                        <div><button onClick={handleLogin}>Login</button></div>
+                        <div><button onClick={handleSignup}>Signup</button></div>
                     </div>
                 </div>
             </nav>

@@ -30,7 +30,7 @@ public class AuthService {
     private final UserDetailsService userDetailsService;
 
     @Transactional
-    public void registerUser(RequestRegister requestRegister){
+    public TokenPair registerUser(RequestRegister requestRegister){
         if(userRepository.existsByEmail(requestRegister.getEmail())){
             throw new IllegalArgumentException("Email already exists");
         }
@@ -43,6 +43,13 @@ public class AuthService {
                 .build();
 
         userRepository.save(user);
+
+        LoginRequest loginRequest = LoginRequest.builder()
+                .email(requestRegister.getEmail())
+                .password(requestRegister.getPassword())
+                .build();
+
+        return login(loginRequest);
     }
 
     public TokenPair login(LoginRequest loginRequest){

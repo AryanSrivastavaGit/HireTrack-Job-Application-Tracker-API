@@ -1,15 +1,9 @@
 import React from 'react'
-import StartPage from './StartPage'
-import SignupPage from './SignupPage'
-import LoginPage from './LoginPage'
+import AppRouter from './routing/appRouting/AppRouter'
 
 const App = () => {
   return (
-    <div>
-      {/* <StartPage></StartPage> */}
-      {/* <SignupPage></SignupPage> */}
-      {/* <LoginPage></LoginPage> */}
-    </div>
+    <AppRouter></AppRouter>
   )
 }
 
