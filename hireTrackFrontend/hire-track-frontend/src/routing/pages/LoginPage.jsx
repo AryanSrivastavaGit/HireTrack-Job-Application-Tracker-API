@@ -64,7 +64,7 @@ const LoginPage = () => {
                             <input type="password" id='password' name='password' onChange={handleChange} minLength={8} required />
 
                         </div>
-                        <button type="submit">{loading ? "Loging in..." : "Login"}</button>
+                        <button type="submit" disabled={loading}>{loading ? "Loging in..." : "Login"}</button>
                     </form>
 
                 </div>

@@ -1,18 +1,15 @@
 package com.aryan.hireTrack.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-public class CompanyRequest {
-
-    @NotBlank(message = "company name can not be empty")
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class CompanyRequestDto {
+    @NotBlank(message = "Company name is required")
     private String companyName;
 
     private String companyUrl;

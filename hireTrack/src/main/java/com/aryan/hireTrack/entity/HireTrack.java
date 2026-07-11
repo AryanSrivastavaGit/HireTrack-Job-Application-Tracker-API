@@ -43,6 +43,7 @@ public class HireTrack {
     private LocalDateTime updatedAt;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Status applicationStatus;
 
     @OneToMany(mappedBy = "hireTrack", cascade = CascadeType.ALL, orphanRemoval = true)

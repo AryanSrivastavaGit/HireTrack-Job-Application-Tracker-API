@@ -271,3 +271,55 @@ footer {
     color: red;
     margin-bottom: 20px;
 }
+
+
+/* Home page */
+
+.homePageNav {
+    width: 100vw;
+    height: 10vh;
+    padding-left: 25px;
+    padding-right: 25px;
+    border: 2px solid black;
+    display: flex;
+    background-color: blueviolet;
+    justify-content: space-between;
+    color: aliceblue;
+    align-items: center;
+}
+
+.homePageNavRight{
+    display: flex;
+    gap: 20px;
+}
+
+.homePageMain{
+    display: flex;
+}
+
+.homePagefilter{
+    width: 25vw;
+    height: 80vh;
+    border: 2px solid red;
+}
+
+.homePagecontent{
+    width: 75vw;
+    height: 80vh;
+    border: 2px solid blue;
+}
+
+.homePagePagination{
+    width: 100vw;
+    height: 10vh;
+    border: 2px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homePageHireTrackCard{
+    width: 75vw;
+    height: 10vh;
+    border: 2px solid orangered;
+}

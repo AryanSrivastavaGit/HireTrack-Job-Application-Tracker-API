@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 const SignupPage = () => {
 
@@ -13,6 +14,8 @@ const SignupPage = () => {
   const [error, setError] = useState("");
 
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,6 +46,7 @@ const SignupPage = () => {
 
         const res = await axios.post('http://localhost:8080/auth/register', signupDataSend);
         console.log(res);
+                
         // redirect or show success here
       } catch (err) {
         if (err.response) {
@@ -84,7 +88,7 @@ const SignupPage = () => {
               <label htmlFor="confirmPassword">Confirm Password</label>
               <input type="password" id='confirmPassword' name='confirmPasssword' onChange={handleChange} minLength={8} required />
             </div>
-            <button type="submit">{loading ? "Signing in..." : "Sign up"}</button>
+            <button type="submit" disabled={loading}>{loading ? "Signing up..." : "Sign up"}</button>
           </form>
         </div>
       </div>

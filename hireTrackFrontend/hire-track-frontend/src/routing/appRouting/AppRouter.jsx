@@ -4,6 +4,7 @@ import HomeLayout from '../layout/HomeLayout'
 import StartPage from '../pages/StartPage'
 import LoginPage from '../pages/LoginPage'
 import SignupPage from '../pages/SignupPage'
+import HomePage from '../pages/HomePage'
 
 const AppRouter = () => {
   const router = createBrowserRouter([{
@@ -16,12 +17,16 @@ const AppRouter = () => {
         element: <StartPage></StartPage>
       },
       {
+        path: 'signup',
+        element: <SignupPage></SignupPage>
+      },
+      {
         path: 'login',
         element: <LoginPage></LoginPage>
       },
       {
-        path: 'signup',
-        element: <SignupPage></SignupPage>
+        path: 'homepage',
+        element: <HomePage></HomePage>
       }
     ]
   }])

@@ -1,8 +1,8 @@
 package com.aryan.hireTrack.controller;
 
-import com.aryan.hireTrack.dto.HireTrackRequest;
-import com.aryan.hireTrack.entity.HireTrack;
+import com.aryan.hireTrack.dto.HireTrackRequestDto;
 import com.aryan.hireTrack.service.HireTrackService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,29 +18,16 @@ public class HireTrackController {
     @Autowired
     private HireTrackService hireTrackService;
 
-    @GetMapping("/getAll")
+    @GetMapping("/getAllHireTrackOfUser")
     @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<?> getAllHireTrack(){
-        return new ResponseEntity<>(hireTrackService.getAllHireTrack(), HttpStatus.OK);
+    public ResponseEntity<?> getHireTrackOfUser(@AuthenticationPrincipal UserDetails userDetails){
+        return new ResponseEntity<>(hireTrackService.getHireTrackOfUser(userDetails.getUsername()), HttpStatus.OK);
     }
 
-    @PostMapping("/add")
+    @PostMapping("/addHireTrackOfUser")
     @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<?> addHireTrack(@AuthenticationPrincipal UserDetails user, @RequestBody HireTrackRequest hireTrackRequest){
-        return new ResponseEntity<>(hireTrackService.addHireTrack(user.getUsername(), hireTrackRequest), HttpStatus.OK);
+    public ResponseEntity<?> addHireTrackOfUser(@AuthenticationPrincipal UserDetails userDetails, @Valid @RequestBody HireTrackRequestDto hireTrackRequestDto){
+        hireTrackService.addHireTrackOfUser(userDetails.getUsername(), hireTrackRequestDto);
+        return new ResponseEntity<>("Hire track added successfully", HttpStatus.OK);
     }
-
-    @PutMapping("/update")
-    @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<?> updateHireTrack(@RequestBody HireTrack hireTrack){
-        return new ResponseEntity<>(hireTrackService.updateHireTrack(hireTrack),HttpStatus.OK);
-    }
-
-    @DeleteMapping("/delete/{id}")
-    @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<?> deleteHireTrack(@PathVariable Long id){
-        hireTrackService.deleteHireTrack(id);
-        return new ResponseEntity<>("Hire Track successfully removed", HttpStatus.OK);
-    }
-
 }

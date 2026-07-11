@@ -1,13 +1,16 @@
 package com.aryan.hireTrack.service;
 
-import com.aryan.hireTrack.dto.HireTrackRequest;
+import com.aryan.hireTrack.dto.HireTrackRequestDto;
+import com.aryan.hireTrack.dto.HireTrackResponseDto;
 import com.aryan.hireTrack.entity.HireTrack;
 import com.aryan.hireTrack.entity.User;
+import com.aryan.hireTrack.mapper.HireTrackMapper;
 import com.aryan.hireTrack.repository.HireTrackRepository;
 import com.aryan.hireTrack.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,57 +23,17 @@ public class HireTrackService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<HireTrack> getAllHireTrack() {
-        return hireTrackRepository.findAll();
+    @Transactional(readOnly = true)
+    public List<HireTrackResponseDto> getHireTrackOfUser(String username) {
+        User user = userRepository.findByEmail(username).orElseThrow(()-> new UsernameNotFoundException("User not exist"));
+        List<HireTrack> hireTracks = hireTrackRepository.findAllByUser_Id(user.getId());
+        return HireTrackMapper.toHireTrackResponseDtoList(hireTracks);
     }
 
-    public HireTrack addHireTrack(String username, HireTrackRequest hireTrackRequest) {
-
-        User user = userRepository.findByEmail(username).orElseThrow(()->new UsernameNotFoundException("User does not exist"));
-
-        HireTrack hireTrack = HireTrack.builder()
-                .company(hireTrackRequest.getCompany())
-                .appliedPortal(hireTrackRequest.getAppliedPortal())
-                .jobRole(hireTrackRequest.getJobRole())
-                .jobType(hireTrackRequest.getJobType())
-                .roleDescription(hireTrackRequest.getRoleDescription())
-                .minSalary(hireTrackRequest.getMinSalary())
-                .maxSalary(hireTrackRequest.getMaxSalary())
-                .currency(hireTrackRequest.getCurrency())
-                .applicationStatus(hireTrackRequest.getApplicationStatus())
-                .companySources(hireTrackRequest.getCompanySources())
-                .roundDetails(hireTrackRequest.getRoundDetails())
-                .importantDates(hireTrackRequest.getImportantDates())
-                .notes(hireTrackRequest.getNotes())
-                .user(user)
-                .build();
-
-        return hireTrackRepository.save(hireTrack);
+    @Transactional
+    public void addHireTrackOfUser(String username, HireTrackRequestDto hireTrackRequestDto) {
+        User user = userRepository.findByEmail(username).orElseThrow(()-> new UsernameNotFoundException("User not exist"));
+        HireTrack hireTrack = HireTrackMapper.toHireTrackEntity(hireTrackRequestDto, user);
+        hireTrackRepository.save(hireTrack);
     }
-
-    public HireTrack updateHireTrack(HireTrack hireTrackRequest) {
-        HireTrack hireTrack = HireTrack.builder()
-                .id(hireTrackRequest.getId())
-                .company(hireTrackRequest.getCompany())
-                .appliedPortal(hireTrackRequest.getAppliedPortal())
-                .jobRole(hireTrackRequest.getJobRole())
-                .jobType(hireTrackRequest.getJobType())
-                .roleDescription(hireTrackRequest.getRoleDescription())
-                .minSalary(hireTrackRequest.getMinSalary())
-                .maxSalary(hireTrackRequest.getMaxSalary())
-                .currency(hireTrackRequest.getCurrency())
-                .applicationStatus(hireTrackRequest.getApplicationStatus())
-                .companySources(hireTrackRequest.getCompanySources())
-                .roundDetails(hireTrackRequest.getRoundDetails())
-                .importantDates(hireTrackRequest.getImportantDates())
-                .notes(hireTrackRequest.getNotes())
-                .user(hireTrackRequest.getUser())
-                .build();
-        return hireTrackRepository.save(hireTrack);
-    }
-
-    public void deleteHireTrack(Long id) {
-        hireTrackRepository.deleteById(id);
-    }
-
 }
