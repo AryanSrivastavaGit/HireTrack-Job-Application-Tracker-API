@@ -323,3 +323,19 @@ footer {
     height: 10vh;
     border: 2px solid orangered;
 }
+
+
+/* Hire Track Card */
+
+.hireTrackCard{
+    width: 75vw;
+    height: 10vh;
+    border: 2px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hireTrackCard > div{
+    display: grid;
+}

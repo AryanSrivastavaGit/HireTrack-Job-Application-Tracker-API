@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contextApi/AuthProvider';
 
 const LoginPage = () => {
     const [loginData, setLoginData] = useState({ email: "", password: "" });
@@ -8,11 +10,14 @@ const LoginPage = () => {
 
     const [loading, setLoading] = useState(false);
 
+    const navigate = useNavigate();
+
+    const {login} = useAuth();
+
     let handleChange = (e) => {
         setError("");
         const { name, value } = e.target;
         setLoginData({ ...loginData, [name]: value });
-        console.log(loginData);
     }
 
     let handleSubmit = (e) => {
@@ -29,9 +34,10 @@ const LoginPage = () => {
                     password: loginData.password
                 };
 
-                console.log(loginData);
                 const res = await axios.post('http://localhost:8080/auth/login', loginDataSend);
-                console.log(res);
+
+                login(res.data);
+                navigate('/homepage');
 
             } catch (error) {
                 if (error.response) {

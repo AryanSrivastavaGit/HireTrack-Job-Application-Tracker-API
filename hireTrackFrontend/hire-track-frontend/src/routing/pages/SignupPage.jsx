@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contextApi/AuthProvider';
 
 const SignupPage = () => {
 
@@ -16,6 +17,8 @@ const SignupPage = () => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  const {login} = useAuth();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,17 +48,17 @@ const SignupPage = () => {
         };
 
         const res = await axios.post('http://localhost:8080/auth/register', signupDataSend);
-        console.log(res);
-                
-        // redirect or show success here
+
+        login(res.data);
+        navigate('/homepage')
+
       } catch (err) {
         if (err.response) {
-          // backend responded with an error (e.g. "Email already exists")
           setError(err.response.data || "Something went wrong. Please try again.");
         } else {
           setError("Network error. Please try again.");
         }
-      } finally{
+      } finally {
         setLoading(false);
       }
     }
