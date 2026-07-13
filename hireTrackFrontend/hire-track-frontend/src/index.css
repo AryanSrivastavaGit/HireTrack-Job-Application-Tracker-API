@@ -331,11 +331,8 @@ footer {
     width: 75vw;
     height: 10vh;
     border: 2px solid blue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.hireTrackCard > div{
     display: grid;
+    grid-template-columns: 1fr 1fr 2fr 2fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
 }
