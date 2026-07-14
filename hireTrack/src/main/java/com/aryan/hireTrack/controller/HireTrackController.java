@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/hireTrack")
-//@CrossOrigin(origins = "http://localhost:5173")
 public class HireTrackController {
 
     @Autowired
@@ -21,8 +20,8 @@ public class HireTrackController {
 
     @GetMapping("/getAllHireTrackOfUser")
     @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<?> getHireTrackOfUser(@AuthenticationPrincipal UserDetails userDetails){
-        return new ResponseEntity<>(hireTrackService.getHireTrackOfUser(userDetails.getUsername()), HttpStatus.OK);
+    public ResponseEntity<?> getHireTrackOfUser(@AuthenticationPrincipal UserDetails userDetails, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "7") int size) {
+        return new ResponseEntity<>(hireTrackService.getHireTrackOfUser(userDetails.getUsername(), page, size), HttpStatus.OK);
     }
 
     @PostMapping("/addHireTrackOfUser")

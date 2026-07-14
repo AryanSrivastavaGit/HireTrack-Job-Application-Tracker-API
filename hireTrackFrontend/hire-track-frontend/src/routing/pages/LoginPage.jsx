@@ -17,10 +17,11 @@ const LoginPage = () => {
     let handleChange = (e) => {
         setError("");
         const { name, value } = e.target;
-        setLoginData({ ...loginData, [name]: value });
+        setLoginData(prev => ({ ...loginData, [name]: value }));
     }
 
     let handleSubmit = (e) => {
+        
         e.preventDefault();
 
         async function submitLoginData() {

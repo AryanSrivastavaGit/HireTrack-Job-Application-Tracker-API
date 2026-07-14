@@ -8,6 +8,10 @@ import com.aryan.hireTrack.mapper.HireTrackMapper;
 import com.aryan.hireTrack.repository.HireTrackRepository;
 import com.aryan.hireTrack.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,10 +28,13 @@ public class HireTrackService {
     private UserRepository userRepository;
 
     @Transactional(readOnly = true)
-    public List<HireTrackResponseDto> getHireTrackOfUser(String username) {
-        User user = userRepository.findByEmail(username).orElseThrow(()-> new UsernameNotFoundException("User not exist"));
-        List<HireTrack> hireTracks = hireTrackRepository.findAllByUser_Id(user.getId());
-        return HireTrackMapper.toHireTrackResponseDtoList(hireTracks);
+    public Page<HireTrackResponseDto> getHireTrackOfUser(String username, int page, int size) {
+        User user = userRepository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not exist"));
+
+        Pageable pageable = PageRequest.of(page, size, Sort.by("id").descending());
+        Page<HireTrack> hireTracks = hireTrackRepository.findAllByUser_Id(user.getId(), pageable);
+
+        return hireTracks.map(HireTrackMapper::toHireTrackResponseDto);
     }
 
     @Transactional

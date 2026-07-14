@@ -1,10 +1,13 @@
 package com.aryan.hireTrack.repository;
 
 import com.aryan.hireTrack.entity.HireTrack;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 import java.util.List;
 
-public interface HireTrackRepository extends JpaRepository<HireTrack, Long> {
-    List<HireTrack> findAllByUser_Id(Long id);
+public interface HireTrackRepository extends JpaRepository<HireTrack, Long>, JpaSpecificationExecutor<HireTrack> {
+    Page<HireTrack> findAllByUser_Id(Long userId, Pageable pageable);
 }

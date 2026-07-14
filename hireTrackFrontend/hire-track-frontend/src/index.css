@@ -327,6 +327,16 @@ footer {
 
 /* Hire Track Card */
 
+.homePagecontentInfo{
+    width: 100%;
+    height: 10vh;
+    border: 2px solid blue;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 2fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
 .hireTrackCard{
     width: 75vw;
     height: 10vh;
@@ -335,4 +345,13 @@ footer {
     grid-template-columns: 1fr 1fr 2fr 2fr 1fr 1fr;
     justify-items: center;
     align-items: center;
+}
+
+.homePagePagination{
+    gap: 5px;
+}
+
+.homePagePagination button{
+    padding: 3px;
+    cursor: pointer;
 }

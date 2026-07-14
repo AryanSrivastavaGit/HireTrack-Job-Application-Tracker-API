@@ -22,7 +22,7 @@ const SignupPage = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setSignupData({ ...signupData, [name]: value });
+    setSignupData(prev => ({ ...signupData, [name]: value }));
     setError(""); // clear old error as user edits
   }
 
