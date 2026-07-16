@@ -353,5 +353,8 @@ footer {
 
 .homePagePagination button{
     padding: 3px;
+}
+
+button{
     cursor: pointer;
 }

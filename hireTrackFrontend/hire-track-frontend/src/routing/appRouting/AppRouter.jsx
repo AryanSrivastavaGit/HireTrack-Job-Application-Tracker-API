@@ -5,6 +5,9 @@ import StartPage from '../pages/StartPage'
 import LoginPage from '../pages/LoginPage'
 import SignupPage from '../pages/SignupPage'
 import HomePage from '../pages/HomePage'
+import NotePage from '../pages/NotePage'
+import ImportantDatePage from '../pages/ImportantDatePage'
+import HireTrackPage from '../pages/HireTrackPage'
 
 const AppRouter = () => {
   const router = createBrowserRouter([{
@@ -27,6 +30,18 @@ const AppRouter = () => {
       {
         path: 'homepage',
         element: <HomePage></HomePage>
+      },
+      {
+        path: 'notepage',
+        element: <NotePage></NotePage>
+      },
+      {
+        path: 'importantDatePage',
+        element: <ImportantDatePage></ImportantDatePage>
+      },
+      {
+        path: 'addHreTrack',
+        element: <HireTrackPage></HireTrackPage>
       }
     ]
   }])

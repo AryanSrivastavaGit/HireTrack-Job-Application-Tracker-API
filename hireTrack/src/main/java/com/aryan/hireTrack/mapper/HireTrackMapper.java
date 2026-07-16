@@ -84,7 +84,7 @@ public class HireTrackMapper {
                 .collect(Collectors.toList());
     }
 
-    private static List<ImportantDateDto> toImportantDateDtoList(List<ImportantDate> dates) {
+    public static List<ImportantDateDto> toImportantDateDtoList(List<ImportantDate> dates) {
         if (dates == null) return Collections.emptyList();
         return dates.stream()
                 .filter(Objects::nonNull)
@@ -98,7 +98,7 @@ public class HireTrackMapper {
                 .collect(Collectors.toList());
     }
 
-    private static List<NoteDto> toNoteDtoList(List<Note> notes) {
+    public static List<NoteDto> toNoteDtoList(List<Note> notes) {
         if (notes == null) return Collections.emptyList();
         return notes.stream()
                 .filter(Objects::nonNull)

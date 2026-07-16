@@ -65,7 +65,7 @@ const HomePage = () => {
                     headers: { Authorization: `Bearer ${accessToken}` },
                     params
                 });
-                
+
                 sethireTracksData(res.data.content);
                 setTotalPages(res.data.totalPages);
 
@@ -86,14 +86,35 @@ const HomePage = () => {
         }
     };
 
+    const handleNote = () => {
+        navigate('/notepage');
+    }
+
+    const handleImportantDate = () => {
+        navigate('/importantDatePage');
+    }
+
+    const handleAddHireTrack = () => {
+        navigate('/addHreTrack')
+    }
+
     return (
         <div>
             <nav className='homePageNav'>
                 <div className='homePageNavLeft'>Hire Track</div>
                 <div className='homePageNavRight'>
-                    <div>Notes</div>
-                    <div>Important Dates</div>
-                    <div>About</div>
+                    <div>
+                        <button onClick={handleAddHireTrack}>Add</button>
+                    </div>
+                    <div>
+                        <button onClick={handleNote}>Notes</button>
+                    </div>
+                    <div>
+                        <button onClick={handleImportantDate}>Important Dates</button>
+                    </div>
+                    <div>
+                        <button>About</button>
+                    </div>
                     <div><button onClick={handleLogout}>Logout</button></div>
                 </div>
             </nav>
@@ -144,17 +165,17 @@ const HomePage = () => {
                             <select name="jobType" id="jobType" onChange={handleFilter} value={filters.jobType}>
                                 <option value="">OPTIONS</option>
                                 <option value="Internship">Internship</option>
-                                <option value="InternshipOnSite">Internship OnSite</option>
-                                <option value="InternshipRemote">Internship Remote</option>
-                                <option value="InternshipHybrid">Internship Hybrid</option>
-                                <option value="FullTime">Full Time</option>
-                                <option value="FullTimeOnSite">Full Time OnSite</option>
-                                <option value="FullTimeOnRemote">Full Time Remote</option>
-                                <option value="FullTimeOnHybrid">Full Time Hybrid</option>
-                                <option value="PartTime">Part Time</option>
-                                <option value="PartTimeOnSite">Part Time OnSite</option>
-                                <option value="PartTimeRemote">Part Time Remote</option>
-                                <option value="PartTimeHybrid">Part Time Hybrid</option>
+                                <option value="Internship-OnSite">Internship OnSite</option>
+                                <option value="Internship-Remote">Internship Remote</option>
+                                <option value="Internship-Hybrid">Internship Hybrid</option>
+                                <option value="Full-Time">Full Time</option>
+                                <option value="Full-Time-OnSite">Full Time OnSite</option>
+                                <option value="Full-Time-Remote">Full Time Remote</option>
+                                <option value="Full-Time-Hybrid">Full Time Hybrid</option>
+                                <option value="Part-Time">Part Time</option>
+                                <option value="Part-Time-OnSite">Part Time OnSite</option>
+                                <option value="Part-Time-Remote">Part Time Remote</option>
+                                <option value="Part-Time-Hybrid">Part Time Hybrid</option>
                             </select>
                         </div>
 

@@ -1,0 +1,206 @@
+.hiretrack-page {
+    min-height: 100vh;
+    background: #f5f6f8;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.hiretrack-card {
+    width: 100%;
+    max-width: 860px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    padding: 32px 36px 40px;
+}
+
+.hiretrack-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #1a1a2e;
+}
+
+.form-section {
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eceef1;
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #33415c;
+    margin-bottom: 14px;
+}
+
+.field-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 20px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.field-full {
+    grid-column: 1 / -1;
+}
+
+.field label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #4a5568;
+    margin-bottom: 6px;
+}
+
+.field input,
+.field select,
+.field textarea {
+    padding: 9px 12px;
+    border: 1px solid #d7dbe0;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #1a1a2e;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.15s ease;
+    font-family: inherit;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    border-color: #5b6cff;
+    box-shadow: 0 0 0 3px rgba(91, 108, 255, 0.12);
+}
+
+.field textarea {
+    resize: vertical;
+}
+
+.field-error {
+    color: #d64545;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.empty-hint {
+    font-size: 13px;
+    color: #8a93a3;
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+.list-item-card {
+    background: #fafbfc;
+    border: 1px solid #e5e8ec;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 14px;
+}
+
+.list-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.list-item-index {
+    font-size: 12px;
+    font-weight: 600;
+    color: #8a93a3;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    color: #d64545;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+.remove-btn:hover {
+    text-decoration: underline;
+}
+
+.add-btn {
+    background: #eef0ff;
+    color: #4451d6;
+    border: 1px dashed #b7bdfa;
+    border-radius: 6px;
+    padding: 9px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.15s ease;
+}
+
+.add-btn:hover {
+    background: #e2e5ff;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #4451d6;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.15s ease;
+}
+
+.submit-btn:hover:not(:disabled) {
+    background: #363fc0;
+}
+
+.submit-btn:disabled {
+    background: #a9aee8;
+    cursor: not-allowed;
+}
+
+.alert {
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.alert-success {
+    background: #e6f7ec;
+    color: #1c7a3d;
+    border: 1px solid #b6e6c5;
+}
+
+.alert-error {
+    background: #fdecec;
+    color: #b3261e;
+    border: 1px solid #f5c2c0;
+}
+
+@media (max-width: 640px) {
+    .field-grid {
+        grid-template-columns: 1fr;
+    }
+    .hiretrack-card {
+        padding: 24px 20px 32px;
+    }
+}
