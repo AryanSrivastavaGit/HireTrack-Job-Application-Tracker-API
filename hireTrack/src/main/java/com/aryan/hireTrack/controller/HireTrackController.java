@@ -1,6 +1,7 @@
 package com.aryan.hireTrack.controller;
 
 import com.aryan.hireTrack.dto.HireTrackRequestDto;
+import com.aryan.hireTrack.dto.HireTrackResponseDto;
 import com.aryan.hireTrack.service.HireTrackService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +49,19 @@ public class HireTrackController {
     public ResponseEntity<?> addHireTrackOfUser(@AuthenticationPrincipal UserDetails userDetails, @Valid @RequestBody HireTrackRequestDto hireTrackRequestDto){
         hireTrackService.addHireTrackOfUser(userDetails.getUsername(), hireTrackRequestDto);
         return new ResponseEntity<>("Hire track added successfully", HttpStatus.OK);
+    }
+
+    @PutMapping("/updateHireTrackOfUser")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<?> updateHireTrackOfUser(@AuthenticationPrincipal UserDetails userDetails, @Valid @RequestBody HireTrackResponseDto hireTrackResponseDto){
+        hireTrackService.updateHireTrackOfUser(userDetails.getUsername(), hireTrackResponseDto);
+        return new ResponseEntity<>("Hire track updated successfully", HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteHireTrackOfUser/{id}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<?> deleteHireTrackOfUser(@PathVariable Long id){
+        hireTrackService.deleteHireTrackOfUser(id);
+        return new ResponseEntity<>("Hire track deleted successfully", HttpStatus.OK);
     }
 }

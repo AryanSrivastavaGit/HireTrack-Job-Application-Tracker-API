@@ -40,7 +40,7 @@ const AppRouter = () => {
         element: <ImportantDatePage></ImportantDatePage>
       },
       {
-        path: 'addHreTrack',
+        path: 'addHireTrack',
         element: <HireTrackPage></HireTrackPage>
       }
     ]

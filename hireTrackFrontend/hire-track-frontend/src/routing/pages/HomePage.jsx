@@ -95,7 +95,7 @@ const HomePage = () => {
     }
 
     const handleAddHireTrack = () => {
-        navigate('/addHreTrack')
+        navigate('/addHireTrack')
     }
 
     return (
@@ -168,6 +168,10 @@ const HomePage = () => {
                                 <option value="Internship-OnSite">Internship OnSite</option>
                                 <option value="Internship-Remote">Internship Remote</option>
                                 <option value="Internship-Hybrid">Internship Hybrid</option>
+                                <option value="Training">Training</option>
+                                <option value="Training-OnSite">Training OnSite</option>
+                                <option value="Training-Remote">Training Remote</option>
+                                <option value="Training-Hybrid">Training Hybrid</option>
                                 <option value="Full-Time">Full Time</option>
                                 <option value="Full-Time-OnSite">Full Time OnSite</option>
                                 <option value="Full-Time-Remote">Full Time Remote</option>

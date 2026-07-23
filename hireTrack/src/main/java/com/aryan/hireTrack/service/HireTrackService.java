@@ -10,6 +10,7 @@ import com.aryan.hireTrack.mapper.HireTrackMapper;
 import com.aryan.hireTrack.repository.HireTrackRepository;
 import com.aryan.hireTrack.repository.UserRepository;
 import com.aryan.hireTrack.specification.HireTrackSpecification;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -68,5 +69,18 @@ public class HireTrackService {
         User user = userRepository.findByEmail(username).orElseThrow(()-> new UsernameNotFoundException("User not exist"));
         HireTrack hireTrack = HireTrackMapper.toHireTrackEntity(hireTrackRequestDto, user);
         hireTrackRepository.save(hireTrack);
+    }
+
+    public void updateHireTrackOfUser(String username, HireTrackResponseDto hireTrackResponseDto) {
+        User user = userRepository.findByEmail(username).orElseThrow(()-> new UsernameNotFoundException("User not exist"));
+        
+    }
+
+    @Transactional
+    public void deleteHireTrackOfUser(Long id) {
+        if(!hireTrackRepository.existsById(id)){
+            throw new IllegalArgumentException("hire track entity not found");
+        }
+        hireTrackRepository.deleteById(id);
     }
 }
